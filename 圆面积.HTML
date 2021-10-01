@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>圆面积</title>
+    <link rel="stylesheet" href="./element-ui/lib/theme-chalk/index.css">
+   <script src="./vue.js"></script>
+   <script src="./element-ui/lib/index.js"></script>
+    
+</head>
+<body background="./img/3.gif">
+    <div id="my" style="text-align:center;vertical-align:middel;"><input name="R" type="number" placeholder="请输入圆的半径"><br>
+        <el-button onclick="mj()">计算面积</el-button>
+        <el-button onclick="zc()">计算周长</el-button><br>
+        <el-button onclick="sy()">首页</el-button>
+        <el-button onclick="sj()">三角形</el-button>
+        <el-button onclick="cf()">矩形</el-button>
+        <p></p>
+    </div>
+</body>
+<script>
+
+class polygon{
+    
+    constructor(name ,num){
+        this.name = name;
+        this.num = num;
+    }
+    show(){
+        document.write(this.name);
+        document.write(this.num);
+    }
+    perimeterCalculation(){}
+    areaCalculation(){}
+
+}
+
+
+class circular extends polygon{
+    constructor(R){
+        super();
+        this.R = R;
+    }
+    perimeterCalculation(){
+        return 2*3.14*this.R;
+    }
+    areaCalculation(){
+        return this.R*this.R*3.14;
+    }
+}
+
+
+
+let c = new circular()
+
+
+    function init() {
+            var R = document.getElementsByName('R')[0]
+            // 获取输入框中的数据
+             value1 = R.value
+            // 小数parseFloat()
+            let c = new circular(parseFloat(value1))
+            return c
+        }
+
+        function mj() {
+           c = init()
+           //计算圆面积
+           alert("该圆面积为："+c.areaCalculation().toFixed(2))
+    }
+        function zc() {
+            c = init()
+            //计算圆周长
+            alert("该圆周长为："+c.perimeterCalculation().toFixed(2))
+        }
+
+
+    function sy(){
+        window.location.href="首页.HTML"
+    }
+    function sj(){
+        window.location.href="三角形面积.HTML"
+    }
+    function cf(){
+        window.location.href="矩形面积.HTML"
+    }
+    function y(){
+        window.location.href="圆面积.HTML"
+    }
+</script>
+<script>
+    new Vue({
+        el:"#my"
+    });
+</script>
+</html>
